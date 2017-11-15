@@ -37,7 +37,9 @@ public class Environment {
   /**
    * The key height for landscape mode. It is relative to the screen height.
    */
-  private static final float KEY_HEIGHT_RATIO_LANDSCAPE = 0.147f;
+  //private static final float KEY_HEIGHT_RATIO_LANDSCAPE = 0.147f;
+  //Sergie bringing this ratio to a more suitable level, as previously the SkbHeight was almost 60% of the screen, now it is 34%
+  private static final float KEY_HEIGHT_RATIO_LANDSCAPE = 0.085f;
 
   /**
    * The height of the candidates area for portrait mode. It is relative to
@@ -67,25 +69,32 @@ public class Environment {
    * The text size for normal keys. It is relative to the smaller one of
    * screen width and height.
    */
-  private static final float NORMAL_KEY_TEXT_SIZE_RATIO = 0.075f;
+
+  //Sergie Made the Key Text size smaller to fit the smaller mKeyHeight size in the landscape orientation
+  private static final float REDUCE_KEY_TEXT_SIZE_RATIO = -0.01f;
+
+  private static final float NORMAL_KEY_TEXT_SIZE_RATIO = 0.075f + REDUCE_KEY_TEXT_SIZE_RATIO;
 
   /**
    * The text size for function keys. It is relative to the smaller one of
    * screen width and height.
    */
-  private static final float FUNCTION_KEY_TEXT_SIZE_RATIO = 0.055f;
+  //Sergie Made the Key Text size smaller to fit the smaller mKeyHeight size in the landscape orientation
+  private static final float FUNCTION_KEY_TEXT_SIZE_RATIO = 0.055f + REDUCE_KEY_TEXT_SIZE_RATIO;
 
   /**
    * The text size balloons of normal keys. It is relative to the smaller one
    * of screen width and height.
    */
-  private static final float NORMAL_BALLOON_TEXT_SIZE_RATIO = 0.085f;
+  //Sergie Made the Key Text size smaller to fit the smaller mKeyHeight size in the landscape orientation
+  private static final float NORMAL_BALLOON_TEXT_SIZE_RATIO = 0.085f + REDUCE_KEY_TEXT_SIZE_RATIO;
 
   /**
    * The text size balloons of function keys. It is relative to the smaller
    * one of screen width and height.
    */
-  private static final float FUNCTION_BALLOON_TEXT_SIZE_RATIO = 0.085f;
+  //Sergie Made the Key Text size smaller to fit the smaller mKeyHeight size in the landscape orientation
+  private static final float FUNCTION_BALLOON_TEXT_SIZE_RATIO = 0.085f + REDUCE_KEY_TEXT_SIZE_RATIO;
 
   /**
    * The configurations are managed in a singleton.
