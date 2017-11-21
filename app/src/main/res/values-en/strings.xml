@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ime_name">BB IME</string>
-    <string name="ime_settings_activity_name">BB IME settings</string>
-    <string name="setting">Google Pinyin input method set</string>
+    <string name="ime_name">Chinese Pinyin</string>
+    <string name="ime_settings_activity_name">Chinese Pinyin settings</string>
+    <string name="setting">Chinese Pinyin input method set</string>
     <string name="setting_sound_key_title">Key sound</string>
     <string name="setting_vibrate_title">Key vibration</string>
     <string name="setting_prediction_title">Associative input</string>

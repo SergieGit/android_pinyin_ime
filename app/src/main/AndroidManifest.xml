@@ -14,9 +14,12 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.inputmethod.pinyin">
+    package="com.android.inputmethod.pinyin"
+    android:versionCode="1"
+    android:versionName="1.00" >
 
-        <original-package android:name="com.android.inputmethod.pinyin" />
+
+    <original-package android:name="com.android.inputmethod.pinyin" />
 
         <uses-permission android:name="android.permission.VIBRATE"/>
         <uses-permission android:name="android.permission.INTERNET"/>
@@ -24,7 +27,7 @@
         <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY"/>
         <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
-        <application android:icon="@drawable/app_icon"
+        <application android:icon="@drawable/app_chinese_pinyin1"
           android:label="@string/ime_name">
             <service android:name=".PinyinDecoderService"
                 android:exported="true">
