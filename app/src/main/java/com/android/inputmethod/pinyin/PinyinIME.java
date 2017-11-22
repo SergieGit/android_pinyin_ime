@@ -513,7 +513,7 @@ public class PinyinIME extends InputMethodService {
         resetToIdleState(false);
       }
       return true;
-    } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_SPACE) {
+    } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER /* --Sergie removed this space bar overloading -- || keyCode == KeyEvent.KEYCODE_SPACE */) {
       if (!realAction) return true;
       chooseCandidate(-1);
       return true;
@@ -522,6 +522,11 @@ public class PinyinIME extends InputMethodService {
       resetToIdleState(false);
       requestHideSelf(0);
       return true;
+    }
+    //Sergie treat SPACE character as normal input
+    else if (keyCode == KeyEvent.KEYCODE_SPACE ) {
+        commitResultText(String.valueOf(' '));
+        return true;
     }
     return false;
   }
@@ -583,9 +588,14 @@ public class PinyinIME extends InputMethodService {
     } else if (keyCode == KeyEvent.KEYCODE_ENTER) {
       sendKeyChar('\n');
       resetToIdleState(false);
-    } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_SPACE) {
+    } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER /* --Sergie removed SPACE bar overlaoding -- || keyCode == KeyEvent.KEYCODE_SPACE */) {
       chooseCandidate(-1);
     }
+    /*Sergie process space char 32 as per normal entry */
+  else if (keyCode == KeyEvent.KEYCODE_SPACE ) {
+        commitResultText(String.valueOf(' '));
+    }
+
 
     return true;
   }
