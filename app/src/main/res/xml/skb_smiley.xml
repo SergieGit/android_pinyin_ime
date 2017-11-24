@@ -17,7 +17,7 @@
   skb_template="@xml/skb_template1"
   skb_cache_flag="true"
   skb_sticky_flag="false"
-  width="14.286%p"
+  width="11.42%p"
   height="25%p"
   key_type="0"
   repeat="false"
@@ -38,6 +38,7 @@
       icon_popup="@drawable/emotion_icon_05_popup"/>
     <key label=":-*" icon="@drawable/emotion_icon_06"
       icon_popup="@drawable/emotion_icon_06_popup"/>
+    <key id = "3"/>
   </row>
 
   <row>

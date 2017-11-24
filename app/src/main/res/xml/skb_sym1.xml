@@ -16,7 +16,7 @@
 <keyboard
   skb_template="@xml/skb_template1"
   skb_cache_flag="true"
-  width="10%p"
+  width="8%p"
   height="25%p"
   key_type="0"
   repeat="false"
@@ -25,6 +25,7 @@
   <row>
     <keys splitter="|" labels="1|2|3|4|5|6|7|8|9|0"
       codes="8|9|10|11|12|13|14|15|16|7"/>
+    <key id ="3"/>
   </row>
 
   <row>

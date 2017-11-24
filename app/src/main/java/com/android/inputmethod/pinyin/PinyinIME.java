@@ -280,6 +280,8 @@ public class PinyinIME extends InputMethodService {
       keyChar = ' ';
     } else if (keyCode == KeyEvent.KEYCODE_APOSTROPHE) {
       keyChar = '\'';
+    }else if (keyCode == KeyEvent.KEYCODE_AT)/*Sergie Special Enter Key become '@' in some input screens */  {
+        keyChar = '@';
     }
 
     if (mInputModeSwitcher.isEnglishWithSkb()) {
@@ -502,7 +504,7 @@ public class PinyinIME extends InputMethodService {
         }
       }
       return true;
-    } else if (keyCode == KeyEvent.KEYCODE_ENTER) {
+    } else if (keyCode == KeyEvent.KEYCODE_ENTER ) {
       if (!realAction) return true;
       if (mInputModeSwitcher.isEnterNoramlState()) {
         commitResultText(mDecInfo.getOriginalSplStr().toString());
@@ -513,7 +515,16 @@ public class PinyinIME extends InputMethodService {
         resetToIdleState(false);
       }
       return true;
-    } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER /* --Sergie removed this space bar overloading -- || keyCode == KeyEvent.KEYCODE_SPACE */) {
+    }
+    /*Sergie In Chinese text enter mode, Use special "Enter Key" which is "KEYCODE_BUTTON_SELECT" to accept English letters typed as part of the final string*/
+    else if (keyCode == KeyEvent.KEYCODE_BUTTON_SELECT ) {
+      if (!realAction) return true;
+      if (!mInputModeSwitcher.isEnterNoramlState()) {
+        commitResultText(mDecInfo.getOriginalSplStr().toString());
+        resetToIdleState(false);
+      }
+    }
+    else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER /* --Sergie removed this space bar overloading -- || keyCode == KeyEvent.KEYCODE_SPACE */) {
       if (!realAction) return true;
       chooseCandidate(-1);
       return true;
@@ -528,6 +539,7 @@ public class PinyinIME extends InputMethodService {
         commitResultText(String.valueOf(' '));
         return true;
     }
+
     return false;
   }
 
@@ -595,7 +607,10 @@ public class PinyinIME extends InputMethodService {
   else if (keyCode == KeyEvent.KEYCODE_SPACE ) {
         commitResultText(String.valueOf(' '));
     }
-
+    /*Sergie Special Enter key becomes  '@' char in some screens */
+    else if (keyCode == KeyEvent.KEYCODE_AT ) {
+      commitResultText(String.valueOf('@'));
+    }
 
     return true;
   }
