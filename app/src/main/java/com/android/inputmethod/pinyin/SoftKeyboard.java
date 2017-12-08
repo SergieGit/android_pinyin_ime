@@ -418,7 +418,7 @@ public class SoftKeyboard {
             ((SoftKeyToggle) sKey).disableAllToggleStates();
           }
         }
-        if (needUpdateQwerty) {
+        if (1==1/* Sergie force case check for now , this is because of a string quirk on row 3, that comes up up uppercase, when the upper 2 row s are lower case** needUpdateQwerty*/) {
           if (sKey.mKeyCode >= KeyEvent.KEYCODE_A && sKey.mKeyCode <= KeyEvent.KEYCODE_Z) {
             sKey.changeCase(isQwertyUpperCase);
           }

@@ -405,6 +405,13 @@ public class PinyinIME extends InputMethodService {
       if (!realAction) return true;
       sendKeyChar('\n');
       return true;
+    /*Sergie In Chinese text enter mode, Use special "Enter Key" which is "KEYCODE_BUTTON_SELECT" to accept English letters typed as part of the final string*/
+    }else if (keyCode == KeyEvent.KEYCODE_BUTTON_SELECT ) {
+        if (!realAction) return true;
+        if (!mInputModeSwitcher.isEnterNoramlState()) {
+          commitResultText(mDecInfo.getOriginalSplStr().toString());
+          resetToIdleState(false);
+        }
     } else if (keyCode == KeyEvent.KEYCODE_ALT_LEFT
         || keyCode == KeyEvent.KEYCODE_ALT_RIGHT
         || keyCode == KeyEvent.KEYCODE_SHIFT_LEFT
@@ -519,10 +526,9 @@ public class PinyinIME extends InputMethodService {
     /*Sergie In Chinese text enter mode, Use special "Enter Key" which is "KEYCODE_BUTTON_SELECT" to accept English letters typed as part of the final string*/
     else if (keyCode == KeyEvent.KEYCODE_BUTTON_SELECT ) {
       if (!realAction) return true;
-      if (!mInputModeSwitcher.isEnterNoramlState()) {
         commitResultText(mDecInfo.getOriginalSplStr().toString());
         resetToIdleState(false);
-      }
+      return true;
     }
     else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER /* --Sergie removed this space bar overloading -- || keyCode == KeyEvent.KEYCODE_SPACE */) {
       if (!realAction) return true;
@@ -649,7 +655,7 @@ public class PinyinIME extends InputMethodService {
       }
     } else if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
       mComposingView.moveCursor(keyCode);
-    } else if ((keyCode == KeyEvent.KEYCODE_ENTER && mInputModeSwitcher.isEnterNoramlState())
+    } else if (((keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BUTTON_SELECT /*Sergie Process Sel Eng button as Enter Key*/)&& mInputModeSwitcher.isEnterNoramlState())
         || keyCode == KeyEvent.KEYCODE_DPAD_CENTER
         || keyCode == KeyEvent.KEYCODE_SPACE) {
       if (ComposingView.ComposingStatus.SHOW_STRING_LOWERCASE == cmpsvStatus) {
@@ -666,7 +672,7 @@ public class PinyinIME extends InputMethodService {
         commitResultText(mDecInfo.getComposingStr());
       }
       resetToIdleState(false);
-    } else if (keyCode == KeyEvent.KEYCODE_ENTER && !mInputModeSwitcher.isEnterNoramlState()) {
+    } else if ((keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BUTTON_SELECT /*Sergie Process Sel Eng button as Enter Key*/)&& !mInputModeSwitcher.isEnterNoramlState()) {
       String retStr;
       if (!mDecInfo.isCandidatesListEmpty()) {
         retStr = mDecInfo.getCurrentFullSent(mCandidatesContainer.getActiveCandiatePos());

@@ -124,14 +124,9 @@
   <!-- Sergie A dedicated "Enter key, used in Chinese text mode, to Select the "English letters" shown in sub window -->
 
   <key id="8" start_pos_x="85.715%p" start_pos_y="50%p"
-      width="14.286%p" height="25%p" label="@" code="77" key_type="1">
-    <toggle_state state_id="@string/toggle_enter_go" label="选择英语" code="109"/>
-    <toggle_state state_id="@string/toggle_enter_search" label = "选择英语" code="109" />
-    <toggle_state state_id="@string/toggle_enter_send" label="@" code="77"/>
-    <toggle_state state_id="@string/toggle_enter_next" label="@" code="77"/>
-    <toggle_state state_id="@string/toggle_enter_done" label="@" code="77"/>
-    <toggle_state state_id="@string/toggle_en_lower" label="@" code="77" />
-    <toggle_state state_id="@string/toggle_en_upper" label="@" code="77" />
+      width="14.286%p" height="25%p" label="选择英语" code="109" key_type="1">
+    <toggle_state state_id="2" label="@" code="77"/>
+    <toggle_state state_id="3" label="@" code="77"/>
   </key>
 
 </skb_template>
